@@ -25,6 +25,8 @@ func batch_col():
 			if n.get_child_count() == 0:
 				n.create_trimesh_collision()
 			else:
-				n.get_child(0).queue_free()
+				for c in n.get_children():
+					if c is StaticBody:
+						c.queue_free()
 				n.create_trimesh_collision()
 	print("Done!")
